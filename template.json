@@ -1,0 +1,18 @@
+{
+  "Actor": {
+    "types": [ "character" ],
+    "character": {
+      "skills": {
+        "muscles": 0,
+        "stuntman": 0,
+        "savvy": 0,
+        "heroism": 0
+      },
+      "history": "",
+      "trick": "",
+      "requisite": "",
+      "flaw": "",
+      "wounds": 0
+    }
+  }
+}

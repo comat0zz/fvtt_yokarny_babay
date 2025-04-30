@@ -25,28 +25,22 @@
     ],
     "packs": [
         {
-            "name": "actor-history",
-            "label": "Прошлое",
+            "name": "tables",
+            "label": "Tables",
             "system": "yokarny_babay",
             "path": "packs/history.db",
             "type": "RollTable",
             "private": false,
-            "flags": {}
-        }
-    ],
-    "packFolders": [
-        {   
-            "name": "Создание героя",
-            "sorting": "m",
-            "color": "#cd2c1e",
-            "packs": [
-                "actor-history"
-            ]
+            "flags": {},
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
         }
     ],
     "url": "https://github.com/comat0zz/fvtt_yokarny_babay",
     "manifest": "https://github.com/comat0zz/fvtt_yokarny_babay/releases/latest/download/system.json",
-    "download": "https://github.com/comat0zz/fvtt_yokarny_babay/releases/download/1.0/system.zip",
+    "download": "https://github.com/comat0zz/fvtt_yokarny_babay/releases/download/v1.0/system.zip",
     "packs": [
     ],
     "id": "yokarny_babay",

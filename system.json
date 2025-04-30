@@ -25,9 +25,9 @@
     ],
     "packs": [
         {
-            "name": "tables",
-            "label": "Tables",
-            "system": "yokarny_babay",
+            "name": "generates",
+            "label": "Генерация персонажа",
+            "system": "yokarny-babay",
             "path": "packs/history.db",
             "type": "RollTable",
             "private": false,
@@ -41,9 +41,7 @@
     "url": "https://github.com/comat0zz/fvtt_yokarny_babay",
     "manifest": "https://github.com/comat0zz/fvtt_yokarny_babay/releases/latest/download/system.json",
     "download": "https://github.com/comat0zz/fvtt_yokarny_babay/releases/latest/download/system.zip",
-    "packs": [
-    ],
-    "id": "yokarny_babay",
+    "id": "yokarny-babay",
     "compatibility": {
         "minimum": "12",
         "verified": "12.331"

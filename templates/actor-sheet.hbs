@@ -1,0 +1,230 @@
+<form class="{{cssClass}} actor-sheet yokarny_babay-sheet" autocomplete="off">
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="abilities">{{localize "SETTINGS.tabs.abilities"}}</a>
+        <a class="item" data-tab="description">{{localize "SETTINGS.tabs.description"}}</a>
+        <a class="item" data-tab="generate">{{localize "SETTINGS.tabs.generate"}}</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Abilities Tab --}}
+        <div class="tab abilities" data-group="primary" data-tab="abilities">
+            <div class="yokarny-wrapper">
+                <div class="yokarny-row yokarny-sides">
+                    <div class="yokarny-logo-yellow"></div>
+                    <div class="yokarny-column yokarny-side-left">
+                        <div class="yokarny-row yokarny-logo">
+                            
+                            {{localize "SETTINGS.game"}}
+                        </div>
+                        <div class="yokarny-row">
+                            <style>
+                                .yokarny-column-name::before {
+                                    content: '{{localize "TYPES.Actor.name"}}';
+                                }
+                            </style>
+                            <div class="yokarny-column yokarny-column-name">                        
+                                <textarea class="yokarny-name" name="name">{{actor.name}}</textarea>
+                            </div>
+                        </div>
+                        <div class="yokarny-row yokarny-img-skills">
+                            <style>
+                                .yokarny-img::before {
+                                    content: '{{localize "TYPES.Actor.image"}}';
+                                }
+                                .yokarny-skills::before {
+                                    content: '{{localize "TYPES.Actor.skills.label"}}';
+                                }
+                            </style>
+                            <div class="yokarny-column yokarny-img">
+                                <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+                            </div>
+                            <div class="yokarny-column yokarny-skills">
+                               <table class="yokarny-skills-table">
+                                    <tr>
+                                        <td>
+                                            <div class="yokarny-skill-label" data-id="muscles">{{localize "TYPES.Actor.skills.muscles.label"}}</div>
+                                            <div class="yokarny-skill-desc">({{localize "TYPES.Actor.skills.muscles.desc"}})</div>
+                                        </td>
+                                        <td>
+                                            <input type="number" name="system.skills.muscles" value="{{actor.system.skills.muscles}}" class="yokarny-skill-input">
+                                            
+                                        </td>
+                                        <td class="yokarny-skill-icon" valign="top">
+                                            <div class="yokarny-skill-options yokarny-skill-muscles"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="yokarny-skill-label" data-id="stuntman">{{localize "TYPES.Actor.skills.stuntman.label"}}</div>
+                                            <div class="yokarny-skill-desc">({{localize "TYPES.Actor.skills.stuntman.desc"}})</div>
+                                        </td>
+                                        <td>
+                                            <input type="number" name="system.skills.stuntman" value="{{actor.system.skills.stuntman}}" class="yokarny-skill-input">
+                                        </td>
+                                        <td class="yokarny-skill-icon" valign="top">
+                                            <div class="yokarny-skill-options yokarny-skill-stuntman"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="yokarny-skill-label" data-id="savvy">{{localize "TYPES.Actor.skills.savvy.label"}}</div>
+                                            <div class="yokarny-skill-desc">({{localize "TYPES.Actor.skills.savvy.desc"}})</div>
+                                        </td>
+                                        <td>
+                                            <input type="number" name="system.skills.savvy" value="{{actor.system.skills.savvy}}" class="yokarny-skill-input">
+                                        </td>
+                                        <td class="yokarny-skill-icon" valign="top">
+                                            <div class="yokarny-skill-options yokarny-skill-savvy"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="yokarny-skill-label" data-id="heroism">{{localize "TYPES.Actor.skills.heroism.label"}}</div>
+                                            <div class="yokarny-skill-desc">({{localize "TYPES.Actor.skills.heroism.desc"}})</div>
+                                        </td>
+                                        <td>
+                                            <input type="number" name="system.skills.heroism" value="{{actor.system.skills.heroism}}" class="yokarny-skill-input">
+                                        </td>
+                                        <td class="yokarny-skill-icon" valign="top">
+                                            <div class="yokarny-skill-options yokarny-skill-heroism"></div>
+                                        </td>
+                                    </tr>
+                               </table>
+                            </div>
+                        </div>
+                        <div class="yokarny-row yokarny-rating">
+                            <!-- Так верстали в 90х -->
+                            <table class="yokarny-rating">
+                                <tr>
+                                    <td>{{localize "TYPES.Actor.rating.up.label"}}</td>
+                                    <td valign="middle">+</td>
+                                    <td valign="middle" class="yokarny-rating-boom">
+                                        <input type="number" name="budget" class="yokarny-rating-number" value="{{budget}}" />
+                                    </td>
+                                    <td valign="middle">-</td>
+                                    <td>{{localize "TYPES.Actor.rating.down.label"}}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="yokarny-rating-label">{{localize "TYPES.Actor.rating.up.one.label"}}</div>
+                                        <div class="yokarny-rating-desc">{{localize "TYPES.Actor.rating.up.one.desc"}}</div>
+                                    </td>
+                                    <td valign="middle">+</td>
+                                    <td valign="bottom" class="yokarny-rating-va">1</td>
+                                    <td valign="middle">-</td>
+                                    <td>
+                                        <div class="yokarny-rating-label">{{localize "TYPES.Actor.rating.down.one.label"}}</div>
+                                        <div class="yokarny-rating-desc">{{localize "TYPES.Actor.rating.down.one.desc"}}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="yokarny-rating-label">{{localize "TYPES.Actor.rating.up.two.label"}}</div>
+                                        <div class="yokarny-rating-desc">{{localize "TYPES.Actor.rating.up.two.desc"}}</div>
+                                    </td>
+                                    <td valign="middle">+</td>
+                                    <td valign="bottom" class="yokarny-rating-va">2</td>
+                                    <td valign="middle">-</td>
+                                    <td>
+                                        <div class="yokarny-rating-label">{{localize "TYPES.Actor.rating.down.two.label"}}</div>
+                                        <div class="yokarny-rating-desc">{{localize "TYPES.Actor.rating.down.two.desc"}}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="yokarny-rating-label">{{localize "TYPES.Actor.rating.up.three.label"}}</div>
+                                        <div class="yokarny-rating-desc">{{localize "TYPES.Actor.rating.up.three.desc"}}</div>
+                                    </td>
+                                    <td valign="middle">+</td>
+                                    <td valign="bottom" class="yokarny-rating-va">3</td>
+                                    <td valign="middle">-</td>
+                                    <td>
+                                        <div class="yokarny-rating-label">{{localize "TYPES.Actor.rating.down.three.label"}}</div>
+                                        <div class="yokarny-rating-desc">{{localize "TYPES.Actor.rating.down.three.desc"}}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">{{localize "TYPES.Actor.rating.info"}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="yokarny-column yokarny-side-right">
+                        <style>
+                            .yokarny-history::before {
+                                content: '{{localize "TYPES.Actor.history.label"}}';
+                            }
+                            .yokarny-trick::before {
+                                content: '{{localize "TYPES.Actor.trick.label"}}';
+                            }
+                            .yokarny-requisite::before {
+                                content: '{{localize "TYPES.Actor.requisite.label"}}';
+                            }
+                            .yokarny-flaw::before {
+                                content: '{{localize "TYPES.Actor.flaw.label"}}';
+                            }
+                            .yokarny-history::after {
+                                content: '{{localize "TYPES.Actor.history.desc"}}';
+                            }
+                            .yokarny-trick::after {
+                                content: '{{localize "TYPES.Actor.trick.desc"}}';
+                            }
+                            .yokarny-requisite::after {
+                                content: '';
+                            }
+                            .yokarny-flaw::after {
+                                content: '';
+                            }
+                        </style>
+                        <div class="yokarny-row yokarny-cell yokarny-history">
+                            <textarea class="yokarny-area" name="system.history">{{actor.system.history}}</textarea>
+                        </div>
+                        <div class="yokarny-row yokarny-cell yokarny-trick">
+                            <textarea class="yokarny-area" name="system.trick">{{actor.system.trick}}</textarea>
+                        </div>
+                        <div class="yokarny-row yokarny-cell yokarny-requisite">
+                            <textarea class="yokarny-area" name="system.requisite">{{actor.system.requisite}}</textarea>
+                        </div>
+                        <div class="yokarny-row yokarny-cell yokarny-flaw">
+                            <textarea class="yokarny-area" name="system.flaw">{{actor.system.flaw}}</textarea>
+                        </div>
+                        <div class="yokarny-row yokarny-wounds">
+                            <div class="yokarny-row yokarny-wounds-header">{{localize "TYPES.Actor.wounds.label"}}</div>
+                            <div class="yokarny-row">
+                                <ul>
+                                    <li{{#ifltNoZero actor.system.wounds 1}} class="yokarny-wounds-isTrue"{{/ifltNoZero}}>
+                                        <div class="yokarny-wounds-label">{{localize "TYPES.Actor.wounds.one.label"}}</div>
+                                        <div class="yokarny-wounds-desc">{{localize "TYPES.Actor.wounds.one.desc"}}</div>      
+                                    </li>
+                                    <li class="yokarny-wounds-its-pink{{#ifltNoZero actor.system.wounds 2}} yokarny-wounds-isTrue{{/ifltNoZero}}">
+                                        <div class="yokarny-wounds-label">{{localize "TYPES.Actor.wounds.two.label"}}</div>
+                                        <div class="yokarny-wounds-desc">{{localize "TYPES.Actor.wounds.two.desc"}}</div>
+                                    </li>
+                                    <li{{#ifltNoZero actor.system.wounds 3}} class="yokarny-wounds-isTrue"{{/ifltNoZero}}>
+                                        <div class="yokarny-wounds-label">{{localize "TYPES.Actor.wounds.three.label"}}</div>
+                                        <div class="yokarny-wounds-desc">{{localize "TYPES.Actor.wounds.three.desc"}}</div>
+                                    </li>
+                                    <li class="yokarny-wounds-its-pink{{#ifltNoZero actor.system.wounds 4}} yokarny-wounds-isTrue{{/ifltNoZero}}">
+                                        <div class="yokarny-wounds-label">{{localize "TYPES.Actor.wounds.for.label"}}</div>
+                                        <div class="yokarny-wounds-desc">{{localize "TYPES.Actor.wounds.for.desc"}}</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{!-- Description Tab --}}
+        <div class="tab description" data-group="primary" data-tab="description">
+            {{editor system.description target="system.description" button=true owner=owner editable=editable}}
+        </div>
+        {{!-- Generate Tab --}}
+        <div class="tab generate" data-group="primary" data-tab="generate">
+            <input type="button" class="yokarny-generate" value="X">
+        </div>
+    </section>
+</form>

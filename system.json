@@ -10,7 +10,7 @@
         }
     ],
     "esmodules": [
-        "module/yokarny_babay.js"
+        "module/yokarny_babay.mjs"
     ],
     "styles": [
         "styles/yokarny_babay.css"
@@ -21,6 +21,27 @@
             "name": "Russian",
             "path": "lang/ru.json",
             "flags": {}
+        }
+    ],
+    "packs": [
+        {
+            "name": "actor-history",
+            "label": "Прошлое",
+            "system": "yokarny_babay",
+            "path": "packs/history.db",
+            "type": "RollTable",
+            "private": false,
+            "flags": {}
+        }
+    ],
+    "packFolders": [
+        {   
+            "name": "Создание героя",
+            "sorting": "m",
+            "color": "#cd2c1e",
+            "packs": [
+                "actor-history"
+            ]
         }
     ],
     "url": "https://github.com/comat0zz/fvtt_yokarny_babay",

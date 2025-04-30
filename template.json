@@ -2,6 +2,7 @@
   "Actor": {
     "types": [ "character" ],
     "character": {
+      "description": "",
       "skills": {
         "muscles": 0,
         "stuntman": 0,

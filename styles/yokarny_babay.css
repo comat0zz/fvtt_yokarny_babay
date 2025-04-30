@@ -1,0 +1,463 @@
+/* Reset bases */
+
+:root {
+  --yokarny-color-blue: #0C75AD;
+  --yokarny-color-red: #D83C3D;
+  --yokarny-color-pink: #FFCCCC;
+  --yokarny-color-green: #00FF2F;
+  --yokarny-color-yellow: #F9F4B3
+}
+
+@font-face {
+  font-family: 'DecimaPro';
+  src: local('decimapro'), url('./fonts/decimapro.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DecimaProA';
+  src: local('DecimaProA'), url('./fonts/decimaproa.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DecimaProA-Bold';
+  src: local('decimaproa-bold'), url('./fonts/decimaproa-bold.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lozung Caps Black';
+  src: local('Lozung Caps Black'), url('./fonts/Lozung_Caps_Black.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DecimaPro-Italic';
+  src: local('decimapro-italic'), url('./fonts/decimapro-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.window-app .window-content {  
+  background: unset;
+  background: #fff;
+  color: var(--yokarny-color-blue);
+}
+
+.window-content div.editor,
+.message-content div.editor {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 300px;
+}
+
+.window-content .yokarny-wrapper .yokarny-row,
+.message-content .yokarny-wrapper .yokarny-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.window-content .yokarny-wrapper .yokarny-row .yokarny-column,
+.message-content .yokarny-wrapper .yokarny-row .yokarny-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.sheet form .sheet-tabs {
+  margin: 0;
+  margin-bottom: 15px;
+  border: 0;
+  border-bottom: 1px solid var(--yokarny-color-blue);
+  font-family: "Lozung Caps Black";
+}
+
+
+.tabs > [data-tab].active,
+.tabs > [data-tab]:hover {
+  text-shadow: 0 0 10px var(--yokarny-color-blue);
+}
+
+/* Actors Sheet */
+.yokarny-sides {
+  padding-left: 30px;
+  padding-top: 30px;
+  background-image: url("../static/01.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.yokarny-side-left {
+  margin-right: 5px;
+}
+.yokarny-side-left img {
+  border: 1px solid var(--yokarny-color-blue);
+  height: 250px
+}
+
+.yokarny-side-left .yokarny-img {
+  flex: 0 0 42% !important;
+  margin-right: 5px;
+}
+
+.actor-sheet textarea, .actor-sheet input[type=number] {
+  background-color: #fff;
+  z-index: 10;
+}
+
+.actor-sheet .yokarny-logo {
+  font-family: "Lozung Caps Black";
+  font-size: var(--font-size-36);
+  color: #000;
+  z-index: 10;
+}
+
+.actor-sheet .yokarny-logo-yellow {
+  background-image: url('../static/yellow.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  left: 0px;
+  top: 78px;
+  z-index: 5;
+  width: 491px;
+  height: 231px;
+  position: absolute;
+}
+
+.actor-sheet .yokarny-name {
+  color: var(--yokarny-color-blue);
+  border: 1px solid var(--yokarny-color-blue);
+  padding-top: 20px;
+  padding-left: 40px;
+  min-height: unset;
+  height: 42px;
+}
+
+.actor-sheet .yokarny-column {
+  position:relative;
+}
+
+.actor-sheet .yokarny-column-name,
+.actor-sheet .yokarny-img-skills {
+  margin-bottom: 10px;
+}
+.actor-sheet .yokarny-img-skills .yokarny-img::before,
+.actor-sheet .yokarny-img-skills .yokarny-skills::before,
+.actor-sheet .yokarny-column-name::before,
+.actor-sheet .yokarny-cell::before {
+  position:absolute;
+  top:4px;
+  left:5px;
+  color:var(--yokarny-color-blue);
+  z-index:11;
+  text-transform: uppercase;
+  font-style: italic;
+  font-family: "DecimaProA-Bold";
+}
+
+.actor-sheet .yokarny-cell textarea {
+    color: var(--yokarny-color-blue);
+    padding-top: 20px;
+    padding-bottom: 10px;
+    height: 76px;
+    border: 1px solid var(--yokarny-color-blue);
+    background-image: url('../static/03.png');
+    background-repeat: repeat;
+    background-size: contain;
+
+}
+
+.actor-sheet textarea:focus {
+    box-shadow: 0 0 6px var(--yokarny-color-blue);
+    outline: none;
+}
+
+.actor-sheet .yokarny-cell {
+    position:relative;
+    margin-bottom: 10px;
+}
+
+.actor-sheet .yokarny-cell::after {
+    position:absolute;
+    bottom:3px;
+    right:5px;
+    color:var(--yokarny-color-blue);
+    z-index:10;
+    font-family: "DecimaPro-Italic";
+}
+
+
+/* Rating Table */
+.yokarny-rating {
+  margin: 0;
+  border: 1px solid var(--yokarny-color-blue);
+  border-collapse: separate;
+  border-spacing: 0px;
+  text-align: center;
+}
+
+.yokarny-rating tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.yokarny-rating tr:nth-child(odd) {
+  background-color: var(--yokarny-color-yellow);
+}
+
+.yokarny-rating tr:first-child {
+  background-color: var(--yokarny-color-blue);
+  color: #fff;
+  text-transform: uppercase;
+  font-family: "DecimaProA-Bold";
+  font-size: var(--font-size-18);
+}
+
+.yokarny-rating tr:last-child {
+  background-color: var(--yokarny-color-green);
+  color: #000;
+  font-size: var(--font-size-14);
+  font-family: "DecimaPro-Italic";
+}
+
+.yokarny-rating tr:last-child td {
+  border-top: 2px solid var(--yokarny-color-blue);
+}
+
+.yokarny-rating .yokarny-rating-label, 
+.yokarny-rating .yokarny-rating-desc {
+  color: #000;
+}
+
+.yokarny-rating .yokarny-rating-label {
+  text-transform: uppercase;
+  font-family: "DecimaProA-Bold";
+  font-size: var(--font-size-14);
+}
+
+.yokarny-rating .yokarny-rating-desc {
+  font-family: "DecimaPro";
+  font-size: var(--font-size-13);
+}
+
+.yokarny-rating .yokarny-rating-boom {
+  font-family: "Lozung Caps Black";
+  font-size: var(--font-size-18);
+}
+
+.yokarny-rating .yokarny-rating-boom input {
+  box-shadow: 0 0 6px var(--yokarny-color-blue);
+  outline: none;
+  border-radius: 18%;
+  padding-top: 6px;
+  border: 1px solid var(--yokarny-color-blue);
+}
+
+.yokarny-rating .yokarny-rating-va {
+  font-family: "Lozung Caps Black";
+  font-size: var(--font-size-24);
+  padding-top: 11px;
+  color: var(--yokarny-color-blue);
+  border-left: 2px solid var(--yokarny-color-blue);
+  border-right: 2px solid var(--yokarny-color-blue);
+}
+
+.yokarny-rating  .yokarny-rating-number {
+  width: 30px;
+  height: 30px;
+  color: var(--yokarny-color-blue);
+}
+
+/* Skills Table */
+
+.yokarny-skills {
+  padding-top: 20px;
+  border: 1px solid var(--yokarny-color-blue);
+  border-collapse: separate;
+  border-spacing: 0px;
+  z-index: 20;
+  font-family: "Lozung Caps Black";
+  padding-right: 40px;
+}
+.yokarny-skills input {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #000;
+  border-radius: 50%;
+  text-align: center;
+  font-size: var(--font-size-20);
+  padding-top: 6px;
+}
+
+.yokarny-skills input:focus {
+  box-shadow: 0 0 6px var(--yokarny-color-blue);
+    outline: none;
+}
+
+.yokarny-skills-table {
+  margin: 0;
+  border: 0;
+  text-align: right;
+  color: #000;
+  background: unset;
+}
+
+.yokarny-skills-table .yokarny-skill-label {
+  font-family: "Lozung Caps Black";
+  font-size: var(--font-size-18);
+  cursor: pointer;
+}
+
+.yokarny-skills-table .yokarny-skill-desc {
+  font-family: "DecimaPro-Italic";
+  font-size: var(--font-size-14);
+}
+
+.yokarny-skill-icon {
+  position: relative;
+  
+}
+
+.yokarny-skill-options {
+  background: url('../static/02.png');
+  width: 50px;
+  height: 50px;
+  z-index: 55;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: 116%;
+  background-position: -2px -1px;
+  left: -8px;
+  top: -8px;
+  border: 2px solid #000;
+  border-radius: 50%;
+}
+.yokarny-skill-muscles {
+  background-position: -2px -1px;
+}
+
+.yokarny-skill-stuntman {
+  background-position: -2px -67px;
+}
+
+.yokarny-skill-savvy {
+  background-position: -2px -133px;
+}
+
+.yokarny-skill-heroism {
+  background-position: -5px -198px;
+}
+
+/* Wounds */
+
+.yokarny-wounds {
+  border: 2px solid var(--yokarny-color-red);
+  cursor: pointer;
+}
+
+.yokarny-wounds .yokarny-wounds-header {
+  color: #fff;
+  text-transform: uppercase;
+  font-family: "DecimaProA-Bold";
+  font-size: var(--font-size-18);
+  background-color: var(--yokarny-color-red);
+  padding: 11px;
+}
+
+.yokarny-wounds ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #000;
+  background-color: #fff;
+  width: 100%;
+}
+
+.yokarny-wounds ul li {
+  padding-top: 5px;
+  padding-left: 2px;
+}
+
+.yokarny-wounds .yokarny-wounds-label {
+  text-transform: uppercase;
+  font-family: "DecimaProA-Bold";
+  font-size: var(--font-size-14);
+  font-style: italic;
+}
+
+.yokarny-wounds .yokarny-wounds-desc {
+  font-family: "DecimaPro-Italic";
+  font-size: var(--font-size-14);
+}
+
+.yokarny-wounds .yokarny-wounds-its-pink {
+  background-color: var(--yokarny-color-pink);
+}
+
+.yokarny-wounds .yokarny-wounds-isTrue {
+  opacity: 0.6;
+  background-color: var(--yokarny-color-red);
+}
+
+/* Rolls */
+
+.yokarny-roll-skills-popup {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "DecimaProA-Bold";
+  font-size: var(--font-size-14);
+}
+
+.yokarny-roll-skills-popup .yokarny-row {
+  margin-bottom: 5px;
+}
+
+.yokarny-roll-skills-popup .yokarny-roll-desc {
+  font-family: "DecimaPro-Italic";
+  font-size: var(--font-size-10);
+}
+
+.yokarny-roll-title, .dice-formula {
+  font-family: "Lozung Caps Black";
+  font-size: var(--font-size-14);
+}
+
+
+.dices-total .dices-skill-name{
+  text-transform: capitalize;
+}
+
+
+#context-menu {
+  font-family: "DecimaProA";
+  font-size: var(--font-size-12);
+  text-align: left;
+}
+
+.roll-success {
+  background-color: rgba(28, 223, 28, 0.1) !important;
+}
+
+.roll-failure {
+  background-color: rgba(226, 19, 46, 0.1) !important;
+}
+
+.roll-success-crit {
+  background-color: rgba(0, 255, 0, 0.336) !important;
+}
+
+.roll-failure-crit {
+  background-color: rgba(248, 4, 37, 0.411) !important;
+}
+
+.context-item:hover,
+a.editor-edit:hover {
+  text-shadow: 0 0 10px var(--yokarny-color-blue);
+}

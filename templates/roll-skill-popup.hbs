@@ -1,0 +1,28 @@
+<form>
+    <div class="yokarny-wrapper yokarny-roll-skills-popup">
+        <div class="yokarny-row yokarny-roll-title">
+            <div class="yokarny-column">{{skill_name}}: 2d6 + {{skill_val}}</div>
+        </div>
+        <div class="yokarny-row">
+            <div class="yokarny-column">{{localize "TYPES.Rolls.normal"}}</div>
+            <div class="yokarny-column">{{localize "TYPES.Rolls.advantage"}}</div>
+            <div class="yokarny-column">{{localize "TYPES.Rolls.hindrance"}}</div>
+        </div>
+        <div class="yokarny-row">
+            <div class="yokarny-column">
+                <input type="radio" name="rollSkill" value="0" checked="checked" /> 
+            </div>
+            <div class="yokarny-column">
+                <input type="radio" name="rollSkill" value="1" /> 
+            </div>
+            <div class="yokarny-column">
+                <input type="radio" name="rollSkill" value="2" /> 
+            </div>
+        </div>
+        <div class="yokarny-row yokarny-roll-desc">
+            <div class="yokarny-column"></div>
+            <div class="yokarny-column"></div>
+            <div class="yokarny-column">{{localize "TYPES.Rolls.add_budget"}}</div>
+        </div>
+    </div>
+</form>

@@ -8,8 +8,9 @@ export const preloadHandlebarsTemplates = async function() {
   // Define template paths to load
   const templatePaths = [
 
-    // Actor Sheet Partials
-    "systems/yokarny_babay/templates/character.html",
+    // Actor Sheet
+    `${game.system_path}/templates/actor-sheet.hbs`,
+    `${game.system_path}/templates/dices-roll.hbs`,
   ];
 
   // Load the template parts

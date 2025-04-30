@@ -1,0 +1,50 @@
+ <div class="dice-roll">
+  <div class="dice-result">
+    <div class="dice-formula{{#ifgt total 9}}{{#if isCritical}} roll-success-crit{{else}} roll-success{{/if}}{{else}}{{#if isCritical}} roll-failure-crit{{else}} roll-failure{{/if}}{{/ifgt}}">
+       {{total}}, {{localize "TYPES.Rolls.andits"}}
+       {{#ifgt total 9}}
+            {{#if isCritical}}
+                {{localize "TYPES.Rolls.success_double"}}
+            {{else}}
+                {{localize "TYPES.Rolls.success"}}
+            {{/if}}
+       {{else}}
+            {{#if isCritical}}
+                {{localize "TYPES.Rolls.failure_double"}}
+            {{else}}
+                {{localize "TYPES.Rolls.failure"}}
+            {{/if}}
+       {{/ifgt}}
+    </div>
+    <div class="dice-tooltip">
+        <table class="dices-total">
+            <tr>
+                <td>{{localize "TYPES.Rolls.formula"}}</td>
+                <td>{{formula}}</td>
+            </tr>
+            <tr class="dices-skill-name">
+                <td>{{skill_name}}</td>
+                <td>{{skill_val}}</td>
+            </tr>
+            <tr>
+                <td>{{localize "TYPES.Rolls.dice"}}{{#if isCritical}} {{localize "TYPES.Rolls.isCritical"}}{{/if}}</td>
+                <td>
+                    {{dice_1}} + {{dice_2}}{{#if dice_3}} + {{dice_3}}{{/if}}
+                </td>
+            </tr>
+            {{#if advantage}}
+            <tr class="dices-skill-name">
+                <td>{{localize "TYPES.Rolls.advantage"}}</td>
+                <td>{{dice_1}} + {{dice_2}}</td>
+            </tr>
+            {{/if}}
+            {{#if hindrance}}
+            <tr class="dices-skill-name">
+                <td>{{localize "TYPES.Rolls.hindrance"}}</td>
+                <td>{{dice_1}} + {{dice_2}}</td>
+            </tr>
+            {{/if}}
+        </table>
+    </div>
+</div>
+</div>

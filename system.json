@@ -10,10 +10,10 @@
         }
     ],
     "esmodules": [
-        "module/yokarny_babay.mjs"
+        "module/yokarny-babay.mjs"
     ],
     "styles": [
-        "styles/yokarny_babay.css"
+        "styles/yokarny-babay.css"
     ],
     "languages": [
         {

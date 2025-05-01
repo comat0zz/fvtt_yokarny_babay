@@ -461,3 +461,27 @@
 a.editor-edit:hover {
   text-shadow: 0 0 10px var(--yokarny-color-blue);
 }
+
+/* Generate */
+.yokarny-generate {
+  font-family: "DecimaProA";
+}
+
+.yokarny-gen-info {
+  text-align: center;
+  font-size: var(--font-size-12);
+}
+
+.yokarny-gen-chkbox td {
+  text-align: left;
+  background: #fff;
+}
+
+.yokarny-gen-chkbox {
+  border: 0;
+
+}
+
+.yokarny-generate {
+  text-align: center;
+}

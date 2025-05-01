@@ -28,7 +28,7 @@
             "name": "generates",
             "label": "Генерация персонажа",
             "system": "yokarny-babay",
-            "path": "packs/history.db",
+            "path": "packs/generaciya-personazha",
             "type": "RollTable",
             "private": false,
             "flags": {},

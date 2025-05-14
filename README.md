@@ -4,6 +4,8 @@
 
 Пакет разработан под руководством автора игры [Глеба Мордовцева](https://t.me/nrdsmit)
 
+Пакет в каталоге Foundry VTT: https://foundryvtt.com/packages/yokarny-babay
+
 Возможности:
 
 - [x] Лист персонажа

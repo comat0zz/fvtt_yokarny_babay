@@ -6,6 +6,8 @@
 
 Пакет в каталоге Foundry VTT: https://foundryvtt.com/packages/yokarny-babay
 
+Книга правил: https://rpgbook.ru/YB_Free
+
 Возможности:
 
 - [x] Лист персонажа

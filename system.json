@@ -64,8 +64,8 @@
         }
     ],
     "url": "https://github.com/comat0zz/fvtt_yokarny_babay",
-    "manifest": "https://github.com/comat0zz/fvtt_yokarny_babay/releases/latest/download/system.json",
-    "download": "https://github.com/comat0zz/fvtt_yokarny_babay/releases/latest/download/system.zip",
+    "manifest": "https://github.com/comat0zz/fvtt_yokarny_babay/releases/download/vtt13-1.1/system.json",
+    "download": "https://github.com/comat0zz/fvtt_yokarny_babay/releases/download/vtt13-1.1/yokarny-babay.zip",
     "id": "yokarny-babay",
     "compatibility": {
         "minimum": "13",

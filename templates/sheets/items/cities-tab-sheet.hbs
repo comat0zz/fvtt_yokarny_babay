@@ -2,8 +2,12 @@
 <div class="czt-wrapper">
   <div class="czt-row">
     <div class="czt-column">
-
-
+      <input type="text" name="name" value="{{item.name}}" >
+    </div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
     </div>
   </div>
 </div>

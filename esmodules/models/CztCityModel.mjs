@@ -11,7 +11,7 @@ export default class CztCityModel extends foundry.abstract.TypeDataModel {
             value: new fields.StringField({ required: false, nullable: false, initial: "" })
         });
         
-        schema.description = new fields.StringField({ required: false });
+        schema.description = new fields.HTMLField({ required: true, textSearch: true });
 
         return schema;
     }

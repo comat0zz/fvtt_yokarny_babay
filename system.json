@@ -36,6 +36,19 @@
                 "PLAYER": "OBSERVER",
                 "ASSISTANT": "OWNER"
             }
+        },
+        {
+            "name": "cities",
+            "label": "Твой город",
+            "system": "yokarny-babay",
+            "path": "packs/cities",
+            "type": "Item",
+            "private": false,
+            "flags": {},
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
         }
     ],
     "media": [
@@ -63,7 +76,7 @@
             "hero": { "htmlFields": ["description"] }
         },
         "Item": {
-            "card": { "htmlFields": ["description"] }
+            "city": { "htmlFields": ["description", "notes"] }
         }
     }
 }

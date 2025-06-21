@@ -25,8 +25,8 @@ export default class CztCityItemSheet extends api.HandlebarsApplicationMixin(she
     static DEFAULT_OPTIONS = {
         tag: "form",
         position: {
-            width: 580,
-            height: "auto",
+            width: 600,
+            height: 600,
         },
         classes: [ SYSTEM.id, "sheet", "city" ],
         form: {
@@ -66,10 +66,12 @@ export default class CztCityItemSheet extends api.HandlebarsApplicationMixin(she
             template: "templates/generic/tab-navigation.hbs",
         },
         cities: {
-            template: `${SYSTEM.template_path}/sheets/items/cities-tab-sheet.hbs`
+            template: `${SYSTEM.template_path}/sheets/items/cities-tab-sheet.hbs`,
+            scrollable: [""]
         },
         notes: {
-            template: `${SYSTEM.template_path}/sheets/items/notes-tab-sheet.hbs`
+            template: `${SYSTEM.template_path}/sheets/items/notes-tab-sheet.hbs`,
+            scrollable: [""]
         }
     }
 
@@ -94,11 +96,7 @@ export default class CztCityItemSheet extends api.HandlebarsApplicationMixin(she
             isEditable: this.isEditable,
 
             enrichedDescription: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.description, { async: true }),
-
-            enrichedExamples: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.examples, { async: true }),
-            enrichedRes10: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.results.on_10, { async: true }),
-            enrichedRes79: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.results.on_79, { async: true }),
-            enrichedRes6: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.results.on_6, { async: true }),
+            enrichedNotes: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.notes, { async: true }),
 
             tabs: {
                 cities: {
@@ -106,14 +104,14 @@ export default class CztCityItemSheet extends api.HandlebarsApplicationMixin(she
                     group: 'primary',
                     id: 'cities',
                     icon: '',
-                    label: 'CZT.Moves.Navs.info',
+                    label: 'TYPES.Item.Navs.description',
                 },
                 notes: {
                     cssClass: this.tabGroups.primary === 'notes' ? 'active' : '',
                     group: 'primary',
                     id: 'notes',
                     icon: '',
-                    label: 'CZT.Moves.Navs.results',
+                    label: 'TYPES.Item.Navs.notes',
                 }
             }
         }
@@ -131,9 +129,8 @@ export default class CztCityItemSheet extends api.HandlebarsApplicationMixin(she
   /** @override */
   async _preparePartContext(partId, context) {
     switch (partId) {
-        case 'results':
-        case 'info':
-        case 'examples':
+        case 'cities':
+        case 'notes':
           context.tab = context.tabs[partId];
           break;
         default:

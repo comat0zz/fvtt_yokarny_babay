@@ -147,6 +147,20 @@ export default class CztHeroActorSheet extends api.HandlebarsApplicationMixin(sh
         wounds.forEach((d) => d.addEventListener("click", this._onActorWoundsUp.bind(this)));
         const wounds2 = this.element.querySelectorAll(".yokarny-wounds")
         wounds2.forEach((d) => d.addEventListener("contextmenu", this._onActorWoundsDown.bind(this)))
+
+        const generateButton = this.element.querySelectorAll(".yokarny-generate-button")
+        generateButton.forEach((d) => d.addEventListener("click", this._onGenerate.bind(this)))
+
+        const rollSkill = this.element.querySelectorAll(".yokarny-skill-label")
+        rollSkill.forEach((d) => d.addEventListener("click", this._onRollSkill.bind(this)))
+
+        const budgetEdit = this.element.querySelectorAll(".yokarny-rating-number")
+        budgetEdit.forEach((d) => d.addEventListener("keyup", this._onBudgetEdit.bind(this)))
+    }
+
+    async _onBudgetEdit(event, target) {
+        const inp_val = $(event.currentTarget).val();
+        this._renderBudget(parseInt(inp_val));
     }
 
     async _onActorWoundsUp(event, target) {
@@ -171,75 +185,126 @@ export default class CztHeroActorSheet extends api.HandlebarsApplicationMixin(sh
     async _onFirstRender(context, options) {
         await super._onFirstRender(context, options);
 
-        this._createContextMenu(this._moveListContextOptions, ".tab-move-list .move-item", {
-            hookName: "getMoveListContextOptions",
+        this._createContextMenu(this._menuSkillRollsContextOptions, ".yokarny-skill-label", {
+            hookName: "menuSkillRollsContextOptions",
             fixed: true,
             parentClassHooks: false,
         });
+    }
+
+    _getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    _getRandomText(data) {
+        const lines = data[0].collections.results._source;
+        const lines_len = lines.length - 1;
+        const lines_rand = this._getRandomInt(0, lines_len);
+        return lines[lines_rand].description;
+    }
+
+    async _onGenerate(event, target) {
+        const packs = await game.packs.get(game.system.id + '.generates').getDocuments({ _id__in: [
+            "78DV08JX0ly1qkUD", // Имена
+            "9aRWCukXb3Bf2kel", // Реквизит
+            "OxwmnB7IizaNaSgJ", // Трюки
+            "aUpOYf5yqPvBR8Ip", // Прошлое
+            "k830fDfmrdv3MeQZ" // Недостатки
+        ] });
+        let actor_gen = {}
+
+        if($('.yokarny-gen-chkbox .gen-name').is(':checked')) {
+            const pack_names = await packs.filter(e => e._id === "78DV08JX0ly1qkUD");
+            const name = this._getRandomText(pack_names);
+            actor_gen["name"] = name;
+        }
+        
+        if($('.yokarny-gen-chkbox .gen-skills').is(':checked')) {
+            let skills = {
+                "muscles": 0,
+                "stuntman": 0,
+                "savvy": 0,
+                "heroism": 0
+            }
+            let turnSkills = ["muscles", "stuntman", "savvy", "heroism"];
+            const limit_point = 3;
+            let points = 6;
+            while(points > 0) {
+                let turn_len = turnSkills.length - 1;
+                let turn_index = this._getRandomInt(0, turn_len);
+                let curr_key = turnSkills[turn_index];
+                let skill = skills[curr_key]
+                if(skill == limit_point) {
+                    turnSkills = turnSkills.filter((sk) => sk !== skill);
+                }else{
+                    skills[curr_key] += 1;
+                    points -= 1;
+                }
+            }
+
+            actor_gen["system.skills.muscles"] = skills["muscles"];
+            actor_gen["system.skills.stuntman"] = skills["stuntman"];
+            actor_gen["system.skills.savvy"] = skills["savvy"];
+            actor_gen["system.skills.heroism"] = skills["heroism"];
+        }
+        
+        if($('.yokarny-gen-chkbox .gen-history').is(':checked')) {
+            const pack_history = await packs.filter(e => e._id === "aUpOYf5yqPvBR8Ip");
+            const history = this._getRandomText(pack_history);
+            actor_gen["system.history"] = history;
+        }
+
+        if($('.yokarny-gen-chkbox .gen-trick').is(':checked')) {
+            const pack_trick = await packs.filter(e => e._id === "OxwmnB7IizaNaSgJ");
+            const trick = this._getRandomText(pack_trick);
+            actor_gen["system.trick"] = trick;
+        }
+
+        if($('.yokarny-gen-chkbox .gen-requisite').is(':checked')) {
+            const pack_requisite = await packs.filter(e => e._id === "9aRWCukXb3Bf2kel");
+            const requisite = this._getRandomText(pack_requisite);
+            actor_gen["system.requisite"] = requisite;
+        }
+        if($('.yokarny-gen-chkbox .gen-flaw').is(':checked')) {
+            const pack_flaw = await packs.filter(e => e._id === "k830fDfmrdv3MeQZ");
+            const flaw = this._getRandomText(pack_flaw);
+            actor_gen["system.flaw"] = flaw;
+        }
+        
+        this.actor.update(actor_gen);
     }
 
     /**
      * Context menu entries for power rolls
      * @returns {ContextMenuEntry}
      */
-    _moveListContextOptions() {
+    _menuSkillRollsContextOptions() {
         return [
             {
-                name: game.i18n.localize("CZT.Rolls.Simple"),
+                name: game.i18n.localize("TYPES.Rolls.advantage"),
                 icon: '',
-                condition: (el) => (el.dataset.type == 'base'),
                 callback: element => {
-                    const moveId = $(element).data("moveid");
-                    this._rollDicesSimple(moveId);
+                    const Id = $(element).data("id");
+                    this._onRollAdvantage(Id);
                 }
             },
             {
-                name: game.i18n.localize("CZT.Rolls.Advance"),
+                name: game.i18n.localize("TYPES.Rolls.hindrance"),
                 icon: '',
-                condition: (el) => (el.dataset.type == 'base'),
                 callback: element => {
-                    const moveId = $(element).data("moveid");
-                    this._rollDicesSimple(moveId, true);
-                }
-            },
-            {
-                name: game.i18n.localize("CZT.Moves.EnableDisable"),
-                icon: '',
-                condition: (el) => (el.dataset.type == 'uniq'),
-                callback: element => {
-                    const moveId = $(element).data("moveid");
-                    this._moveEnable(moveId);
-                }
-            },
-            {
-                name: game.i18n.localize("CZT.Moves.Navs.examples"),
-                icon: '',
-                condition: (el) => (el.dataset.type == 'base'),
-                callback: element => {
-                    const moveId = $(element).data("moveid");
-                    this._showExamples(moveId);
-                }
-            },
-            {
-                name: game.i18n.localize("CZT.Moves.AddContact"),
-                icon: '',
-                condition: (el) => (el.dataset.type == 'uniq' && el.dataset.relation),
-                callback: element => {
-                    const moveId = $(element).data("moveid");
-                    this._AddContact(moveId);
-                }
-            },
-            {
-                name: game.i18n.localize("CZT.Moves.DellContact"),
-                icon: '',
-                condition: (el) => (el.dataset.type == 'uniq' && el.dataset.relation),
-                callback: element => {
-                    const moveId = $(element).data("moveid");
-                    this._DellContact(moveId);
+                    const Id = $(element).data("id");
+                    this._onRollHindrance(Id);
                 }
             }
         ];
     };
+
+    async _renderBudget(num = 1) {
+        game.budget = parseInt(num);
+        game.actors.forEach((actor) => actor.render(true));
+    }
 
     /** @override */
     async _preparePartContext(partId, context) {
@@ -254,9 +319,6 @@ export default class CztHeroActorSheet extends api.HandlebarsApplicationMixin(sh
       return context;
     }
     
-    async _rollDicesSimple(moveId, isHelp = false) {
-
-    }
 
     async _onRollSkill(event, target) {
         const skill = $(event.currentTarget).attr('data-id');
@@ -271,7 +333,7 @@ export default class CztHeroActorSheet extends api.HandlebarsApplicationMixin(sh
         if(dice_1 == dice_2) {
             isCritical = true;
         }
-        const template = await renderTemplate(`${SYSTEM.template_path}/chats/dices-roll.hbs`, {
+        const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/chats/dices-roll.hbs`, {
             formula: formula,
             result: roll.result,
             total: roll.total,
@@ -320,7 +382,7 @@ export default class CztHeroActorSheet extends api.HandlebarsApplicationMixin(sh
             isCritical = true;
         }
         
-        const template = await renderTemplate(`${SYSTEM.template_path}/chats/dices-roll.hbs`, {
+        const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/chats/dices-roll.hbs`, {
             formula: formula,
             result: roll.result,
             total: total,
@@ -369,7 +431,7 @@ export default class CztHeroActorSheet extends api.HandlebarsApplicationMixin(sh
             isCritical = true;
         }
         
-        const template = await renderTemplate(`${SYSTEM.template_path}/chats/dices-roll.hbs`, {
+        const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/chats/dices-roll.hbs`, {
             formula: formula,
             result: roll.result,
             total: total,

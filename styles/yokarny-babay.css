@@ -448,10 +448,12 @@ form.yokarny_babay .yokarny-cell::after {
 }
 
 
-#context-menu {
+#context-menu, .context-item:hover {
   font-family: "DecimaProA";
   font-size: var(--font-size-12);
   text-align: left;
+  color: #fff;
+  background-color: #000;
 }
 
 .roll-success {

@@ -1,0 +1,53 @@
+<section class="tab {{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+<div class="yokarny-wrapper yokarny-generate">
+                <div class="yokarny-row yokarny-gen-info">
+                    <div class="yokarny-column">{{localize "TYPES.Gen.info_1"}}<br>{{localize "TYPES.Gen.info_2"}}</div>
+                </div>
+                <div class="yokarny-row">
+                    <table class="yokarny-gen-chkbox">
+                        <tr>
+                            <td style="width:5%"><input type="checkbox" class="gen-name" checked="checked" /></td>
+                            <td style="width:15%">{{localize "TYPES.Actor.name"}}</td>
+                            <td style="width:80%" class="gen-name-result">{{actor.name}}</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="gen-skills" checked="checked" /></td>
+                            <td>{{localize "TYPES.Actor.skills.label"}}</td>
+                            <td class="gen-skills-result">
+                                {{localize "TYPES.Actor.skills.muscles.label"}}: {{actor.system.skills.muscles}},
+                                {{localize "TYPES.Actor.skills.stuntman.label"}}: {{actor.system.skills.stuntman}},
+                                {{localize "TYPES.Actor.skills.savvy.label"}}: {{actor.system.skills.savvy}},
+                                {{localize "TYPES.Actor.skills.heroism.label"}}: {{actor.system.skills.heroism}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="gen-history" checked="checked" /></td>
+                            <td>{{localize "TYPES.Actor.history.label"}}</td>
+                            <td class="gen-history-result">{{actor.system.history}}</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="gen-trick" checked="checked" /></td>
+                            <td>{{localize "TYPES.Actor.trick.label"}}</td>
+                            <td class="gen-trick-result">{{actor.system.trick}}</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="gen-requisite" checked="checked" /></td>
+                            <td>{{localize "TYPES.Actor.requisite.label"}}</td>
+                            <td class="gen-requisite-result">{{actor.system.requisite}}</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="gen-flaw" checked="checked" /></td>
+                            <td>{{localize "TYPES.Actor.flaw.label"}}</td>
+                            <td class="gen-flaw-result">{{actor.system.flaw}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="yokarny-row yokarny-generate">
+                    <div class="yokarny-column"></div>
+                    <div class="yokarny-column"><input type="button" value="{{localize "TYPES.Gen.Roll"}}" /></div>
+                    <div class="yokarny-column"></div>            
+                </div>
+            </div>
+
+</div>
+</section>

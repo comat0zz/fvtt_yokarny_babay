@@ -43,46 +43,57 @@
   font-style: normal;
 }
 
-.window-app .window-content {  
+form.yokarny_babay {  
   background: unset;
   background: #fff;
   color: var(--yokarny-color-blue);
 }
 
-.window-content div.editor,
-.message-content div.editor {
+form.yokarny_babay prose-mirror {
   flex: 0 0 auto;
   width: 100%;
   height: 300px;
 }
 
-.window-content .yokarny-wrapper .yokarny-row,
-.message-content .yokarny-wrapper .yokarny-row {
+.yokarny-wrapper .yokarny-row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
 }
 
-.window-content .yokarny-wrapper .yokarny-row .yokarny-column,
-.message-content .yokarny-wrapper .yokarny-row .yokarny-column {
+.yokarny-wrapper .yokarny-row .yokarny-column {
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
   flex: 1;
 }
 
-.sheet form .sheet-tabs {
-  margin: 0;
-  margin-bottom: 15px;
-  border: 0;
+form.sheet nav.tabs {
+  border: none;
   border-bottom: 1px solid var(--yokarny-color-blue);
+  color: #000;
   font-family: "Lozung Caps Black";
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0;
+  margin-bottom: 15px;
+  z-index: 10;
 }
-
-
-.tabs > [data-tab].active,
-.tabs > [data-tab]:hover {
+form.sheet nav.tabs a {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+form.sheet nav.tabs [data-tab], form.sheet nav.tabs [data-tab].active {
+  color: #000;
+}
+form.sheet nav.tabs [data-tab].active, form.sheet nav.tabs [data-tab]:hover {
+  text-shadow: unset;
+  font-weight: bold;
   text-shadow: 0 0 10px var(--yokarny-color-blue);
 }
 
@@ -90,7 +101,7 @@
 .yokarny-sides {
   padding-left: 30px;
   padding-top: 30px;
-  background-image: url("../static/01.png");
+  background-image: url("../assets/01.png");
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -100,7 +111,7 @@
 }
 .yokarny-side-left img {
   border: 1px solid var(--yokarny-color-blue);
-  height: 250px
+  height: 301px
 }
 
 .yokarny-side-left .yokarny-img {
@@ -108,20 +119,20 @@
   margin-right: 5px;
 }
 
-.actor-sheet textarea, .actor-sheet input[type=number] {
+form.yokarny_babay textarea, form.yokarny_babay input[type=number] {
   background-color: #fff;
   z-index: 10;
 }
 
-.actor-sheet .yokarny-logo {
+form.yokarny_babay .yokarny-logo {
   font-family: "Lozung Caps Black";
   font-size: var(--font-size-36);
   color: #000;
   z-index: 10;
 }
 
-.actor-sheet .yokarny-logo-yellow {
-  background-image: url('../static/yellow.png');
+form.yokarny_babay .yokarny-logo-yellow {
+  background-image: url('../assets/yellow.png');
   background-repeat: no-repeat;
   background-size: contain;
   left: 0px;
@@ -132,7 +143,7 @@
   position: absolute;
 }
 
-.actor-sheet .yokarny-name {
+form.yokarny_babay .yokarny-name {
   color: var(--yokarny-color-blue);
   border: 1px solid var(--yokarny-color-blue);
   padding-top: 20px;
@@ -141,18 +152,18 @@
   height: 42px;
 }
 
-.actor-sheet .yokarny-column {
+form.yokarny_babay .yokarny-column {
   position:relative;
 }
 
-.actor-sheet .yokarny-column-name,
-.actor-sheet .yokarny-img-skills {
+form.yokarny_babay .yokarny-column-name,
+form.yokarny_babay .yokarny-img-skills {
   margin-bottom: 10px;
 }
-.actor-sheet .yokarny-img-skills .yokarny-img::before,
-.actor-sheet .yokarny-img-skills .yokarny-skills::before,
-.actor-sheet .yokarny-column-name::before,
-.actor-sheet .yokarny-cell::before {
+form.yokarny_babay .yokarny-img-skills .yokarny-img::before,
+form.yokarny_babay .yokarny-img-skills .yokarny-skills::before,
+form.yokarny_babay .yokarny-column-name::before,
+form.yokarny_babay .yokarny-cell::before {
   position:absolute;
   top:4px;
   left:5px;
@@ -163,29 +174,30 @@
   font-family: "DecimaProA-Bold";
 }
 
-.actor-sheet .yokarny-cell textarea {
+form.yokarny_babay .yokarny-cell textarea {
     color: var(--yokarny-color-blue);
     padding-top: 20px;
     padding-bottom: 10px;
     height: 76px;
     border: 1px solid var(--yokarny-color-blue);
-    background-image: url('../static/03.png');
+    background-image: url('../assets/03.png');
     background-repeat: repeat;
     background-size: contain;
-
+    width: 100%;
+    height: 110px;
 }
 
-.actor-sheet textarea:focus {
+form.yokarny_babay textarea:focus {
     box-shadow: 0 0 6px var(--yokarny-color-blue);
     outline: none;
 }
 
-.actor-sheet .yokarny-cell {
+form.yokarny_babay .yokarny-cell {
     position:relative;
     margin-bottom: 10px;
 }
 
-.actor-sheet .yokarny-cell::after {
+form.yokarny_babay .yokarny-cell::after {
     position:absolute;
     bottom:3px;
     right:5px;
@@ -285,6 +297,7 @@
   z-index: 20;
   font-family: "Lozung Caps Black";
   padding-right: 40px;
+  width: 200px
 }
 .yokarny-skills input {
   width: 50px;
@@ -311,22 +324,21 @@
 
 .yokarny-skills-table .yokarny-skill-label {
   font-family: "Lozung Caps Black";
-  font-size: var(--font-size-18);
+  font-size: var(--font-size-16);
   cursor: pointer;
 }
 
 .yokarny-skills-table .yokarny-skill-desc {
   font-family: "DecimaPro-Italic";
-  font-size: var(--font-size-14);
+  font-size: var(--font-size-12);
 }
 
 .yokarny-skill-icon {
   position: relative;
-  
 }
 
 .yokarny-skill-options {
-  background: url('../static/02.png');
+  background: url('../assets/02.png');
   width: 50px;
   height: 50px;
   z-index: 55;
@@ -334,8 +346,8 @@
   background-repeat: no-repeat;
   background-size: 116%;
   background-position: -2px -1px;
-  left: -8px;
-  top: -8px;
+  left: -20px;
+  top: 1px;
   border: 2px solid #000;
   border-radius: 50%;
 }
@@ -383,6 +395,7 @@
 .yokarny-wounds ul li {
   padding-top: 5px;
   padding-left: 2px;
+  margin-bottom: 0
 }
 
 .yokarny-wounds .yokarny-wounds-label {

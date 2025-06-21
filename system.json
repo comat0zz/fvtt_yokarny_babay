@@ -1,7 +1,7 @@
 {
     "title": "Ёкарный бабай!",
     "description": "Настольная ролевая игра Глеба Мордовцева в духе безбашенных российских боевиков.",
-    "version": "1.0",
+    "version": "1.1",
     "authors": [
         {
             "name": "Nikita Belov",
@@ -10,7 +10,7 @@
         }
     ],
     "esmodules": [
-        "module/yokarny-babay.mjs"
+        "esmodules/system.mjs"
     ],
     "styles": [
         "styles/yokarny-babay.css"
@@ -38,12 +38,32 @@
             }
         }
     ],
+    "media": [
+        {
+          "type": "cover",
+          "loop": false,
+          "flags": {}
+        },
+        {
+          "type": "setup",
+          "url": "systems/yokarny-babay/assets/cover.png",
+          "thumbnail": "systems/yokarny-babay/assets/cover.png"
+        }
+    ],
     "url": "https://github.com/comat0zz/fvtt_yokarny_babay",
     "manifest": "https://github.com/comat0zz/fvtt_yokarny_babay/releases/latest/download/system.json",
     "download": "https://github.com/comat0zz/fvtt_yokarny_babay/releases/latest/download/system.zip",
     "id": "yokarny-babay",
     "compatibility": {
-        "minimum": "12",
-        "verified": "12.331"
+        "minimum": "13",
+        "verified": "13"
+    },
+    "documentTypes": {
+        "Actor": {
+            "hero": { "htmlFields": ["description"] }
+        },
+        "Item": {
+            "card": { "htmlFields": ["description"] }
+        }
     }
 }
